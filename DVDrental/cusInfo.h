@@ -12,7 +12,7 @@
 #define NAME_LEN   30
 #define PHONE_LEN  30
 
-typedef struct __cusInfo 
+typedef struct __cusInfo
 {    
     char ID[ID_LEN];
     char name[NAME_LEN];
@@ -21,3 +21,4 @@ typedef struct __cusInfo
 
 #endif
 /* end of file */
+//

@@ -19,7 +19,7 @@ int main(void)
     {
         ShowMenu();
         scanf("%d", &inputMenu);
-        fflush(stdin);
+		while (getchar() != '\n');
 
         switch(inputMenu)
         {

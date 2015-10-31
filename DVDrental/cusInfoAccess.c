@@ -15,10 +15,23 @@ static int numOfCustomer=0;
 /* 함    수: int AddCusInfo (char * ID, char * name, char * num)
  * 기    능: cusInfo 할당 및 저장. 
  * 반    환: 성공 시 '등록된 정보의 수', 실패 시 0을 반환.
+			사용후 반환값으로 오류검사 필.
  *
  */
 int AddCusInfo(char * ID, char * name, char * num)
 {
+	if (numOfCustomer>=100)
+	{
+		puts("등록가능한 사용자수 초과");
+		return 0;
+	}
+
+	cusList[numOfCustomer] = (cusInfo*)malloc(sizeof(cusInfo));
+	strcpy(cusList[numOfCustomer]->ID, ID);
+	strcpy(cusList[numOfCustomer]->name, name);
+	strcpy(cusList[numOfCustomer]->phoneNum, num);
+	numOfCustomer++;
+	return numOfCustomer;
 }
 
 
@@ -29,6 +42,15 @@ int AddCusInfo(char * ID, char * name, char * num)
  */
 cusInfo * GetCusPtrByID(char * ID)
 {
+	int i = 0;
+	for (i = 0; i < numOfCustomer; i++)
+	{
+		if (strcmp(ID, cusList[i]->ID) == 0)
+		{
+			return cusList[i];
+		}
+	}
+	return NULL;
 }
 
 
@@ -39,6 +61,15 @@ cusInfo * GetCusPtrByID(char * ID)
  */
 int IsRegistID(char * ID)
 {
+	int i = 0;
+	for ( i = 0; i < numOfCustomer; i++)
+	{
+		if (strcmp(ID,cusList[i]->ID))
+		{
+			return 1;
+		}
+	}
+	return 0;
 }
 
 /* end of file */

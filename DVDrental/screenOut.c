@@ -33,7 +33,7 @@ void ShowCustomerInfo(cusInfo * pCus)
     printf("┃ ▶ 전화번호: %s \n", pCus->phoneNum);
     printf("┗━━━━━━━━━━━━━━━━ \n\n");
     
-    getchar(); // 키 입력시 넘어가기 위해서..
+	system("pause");
 }
 
 

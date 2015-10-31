@@ -17,6 +17,36 @@
  */
 void RegistCustomer(void)
 {
+	char id[10];
+	char name[100];
+	char phone[100];
+
+
+	fputs("ID 입력: ", stdout);
+	gets(id);
+	if (IsRegistID(id))
+	{
+		puts("이미 존재하는 아이디..재시도 필요");
+		system("pause");
+		return;
+	}
+
+	fputs("이름 입력: ", stdout);
+	gets(name);
+
+	fputs("전번 입력: ", stdout);
+	gets(phone);
+	
+	if (!AddCusInfo(id, name, phone))
+	{
+		puts("정상적 저장 실패!");
+		system("pause");
+		return;
+	};
+	puts("가입 완료");
+	system("pause");
+
+
 }
 
 /* 함    수: void SearchCusInfo(void)
@@ -26,6 +56,20 @@ void RegistCustomer(void)
  */
 void SearchCusInfo(void)
 {
+	cusInfo* pFindingCus;
+	char findingID[10];
+	fputs("찾는 ID 입력: ", stdout);
+	gets(findingID);
+
+	pFindingCus = GetCusPtrByID(findingID);
+	if (pFindingCus==NULL)
+	{
+		puts("해당ID 부존");
+		system("pause");
+		return;
+	}
+
+	ShowCustomerInfo(pFindingCus);
 }
 
 /* end of file */
