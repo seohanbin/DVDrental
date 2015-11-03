@@ -7,6 +7,8 @@
 
 #include "common.h"
 #include "cusInfo.h"
+#include "dvdInfo.h"
+#include "screenOut.h"
 
 /* 프로그램 사용을 위한 메뉴 */
 void ShowMenu(void)
@@ -16,7 +18,9 @@ void ShowMenu(void)
     printf("━━━━━ 메  뉴 ━━━━━━━ \n");
     printf(" 1. 신규가입 \n");
     printf(" 2. 고객검색 \n");
-    printf(" 3. 종료 \n");
+	printf(" 3. DVD등록 \n");
+	printf(" 4. DVD찾기 \n");
+    printf(" 5. 종료 \n");
     printf("━━━━━━━━━━━━━━━━ \n");
     printf("선택》 ");
 }
@@ -36,5 +40,38 @@ void ShowCustomerInfo(cusInfo * pCus)
 	system("pause");
 }
 
+/* DVD 기본 정보 출력 */
+void ShowDVDInfo(dvdInfo * pCus)
+{
+	system("cls");   //stdlib.h
+
+	printf("┏━━━━━━━━━━━━━━━━ \n");
+	printf("┃ ▶ ISBN: %s \n", pCus->ISBN);
+	printf("┃ ▶ title: %s \n", pCus->title);
+	printf("┃ ▶ genre: "); ShowGenre(pCus->genre); puts("");
+	printf("┗━━━━━━━━━━━━━━━━ \n\n");
+
+	system("pause");
+}
+
+//2가지 방식 반환가능. 문자열출력void, 문자열반환char*
+void ShowGenre(int gen)
+{
+	switch (gen)
+	{
+	case ACTION:
+		fputs("액션", stdout);
+		break;
+	case COMIC:
+		fputs("코믹", stdout);
+		break;
+	case SF:
+		fputs("과학", stdout);
+		break;
+	case ROMANTIC:
+		fputs("로맨틱", stdout);
+		break;
+	}
+}
 
 /* end of file */

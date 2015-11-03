@@ -30,6 +30,15 @@
     <ClInclude Include="screenOut.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="dvdInfo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dvdInfoAccess.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="dvdManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cusInfoAccess.c">
@@ -42,6 +51,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="screenOut.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dvdManager.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="dvdInfoAccess.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
