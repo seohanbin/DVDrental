@@ -63,14 +63,24 @@ dvdInfo * GetDVDPtrByID(char * ISBN)
 int IsRegistDVD(char * ISBN)
 {
 	int i = 0;
-	for ( i = 0; i < numOfDVD; i++)
+
+	if (GetDVDPtrByID(ISBN) != 0)
 	{
-		if (strcmp(ISBN,dvdList[i]->ISBN))
-		{
-			return 1;
-		}
+		return 1;
 	}
-	return 0;
+	else
+	{
+		return 0;
+	}
+
+	//for ( i = 0; i < numOfDVD; i++)
+	//{
+	//	if (!strcmp(ISBN,dvdList[i]->ISBN))
+	//	{
+	//		return 1;
+	//	}
+	//}
+	//return 0;
 }
 
 /* end of file */

@@ -62,14 +62,25 @@ cusInfo * GetCusPtrByID(char * ID)
 int IsRegistID(char * ID)
 {
 	int i = 0;
-	for ( i = 0; i < numOfCustomer; i++)
+
+	if (GetCusPtrByID(ID) == 0)
 	{
-		if (strcmp(ID,cusList[i]->ID))
-		{
-			return 1;
-		}
+		return 0;
 	}
-	return 0;
+	else
+	{
+		return 1;
+	}
+
+	//for ( i = 0; i < numOfCustomer; i++)
+	//{
+	//	if (!strcmp(ID,cusList[i]->ID))
+	//	{
+	//		printf("%s and %s", ID, cusList[i]->ID);
+	//		return 1;
+	//	}
+	//}
+	//return 0;
 }
 
 /* end of file */
