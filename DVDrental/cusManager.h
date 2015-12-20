@@ -11,6 +11,7 @@
 void RegistCustomer(void);
 void SearchCusInfo(void);
 
+void Registcusseed(void);
 #endif
 
 /* end of file */

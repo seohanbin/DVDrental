@@ -20,7 +20,7 @@ static int numOfDVD=0;
  */
 int AddDVDInfo(char * isbn, char * title, int * genre)
 {
-	if (numOfDVD>=100)
+	if (numOfDVD>=MAX_DVD)
 	{
 		puts("등록가능한 디비디수 초과");
 		return 0;
@@ -31,6 +31,8 @@ int AddDVDInfo(char * isbn, char * title, int * genre)
 	strcpy(dvdList[numOfDVD]->title, title);
 	//strcpy(dvdList[numOfDVD]->genre, genre);
 	dvdList[numOfDVD]->genre = *genre;
+	dvdList[numOfDVD]->numOfRentCus = 0;
+	dvdList[numOfDVD]->rentState = RETURNED;
 	numOfDVD++;
 	return numOfDVD;
 }
@@ -48,7 +50,7 @@ dvdInfo * GetDVDPtrByID(char * ISBN)
 	{
 		if (strcmp(ISBN, dvdList[i]->ISBN) == 0)
 		{
-			return dvdList[i];
+			return dvdList[i];	
 		}
 	}
 	return NULL;
@@ -82,5 +84,8 @@ int IsRegistDVD(char * ISBN)
 	//}
 	//return 0;
 }
+
+
+
 
 /* end of file */

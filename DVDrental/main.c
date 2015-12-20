@@ -11,7 +11,11 @@
 #include "cusManager.h"
 #include "dvdManager.h"
 
-enum{CUS_REGIST=1, CUS_SEARCH, DVD_REGIST, DVD_SEARCH, QUIT};
+enum{CUS_REGIST=1, CUS_SEARCH, 
+	DVD_REGIST, DVD_SEARCH, 
+	DVD_RENT, DVD_RETURN, 
+	DVD_RENTHISTORY, QUIT,
+	SEEDDATA};//씨드는 9번!
 
 int main(void)
 {
@@ -39,6 +43,24 @@ int main(void)
 
 		case DVD_SEARCH:
 			SearchDVDInfo();
+			break;
+
+		case DVD_RENT:
+			RentDVD();
+			break;
+
+		case DVD_RETURN:
+			ReturnDVD();
+			break;
+
+		case DVD_RENTHISTORY:
+			HistoryOfRent();
+			break;
+
+		case SEEDDATA:
+			puts("시드데이터 시작..");
+			Registdvdseed();
+			Registcusseed();
 			break;
         }
         

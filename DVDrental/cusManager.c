@@ -72,4 +72,13 @@ void SearchCusInfo(void)
 	ShowCustomerInfo(pFindingCus);
 }
 
+void Registcusseed(void)
+{
+	puts("시드 커스텀 시작..");
+	AddCusInfo("1234", "qwer", "asdf");
+	AddCusInfo("2345", "wert", "sdfg");
+	AddCusInfo("3456", "erty", "dfgh");
+	puts("시드 커스텀 완료..");
+	system("pause");
+}
 /* end of file */
