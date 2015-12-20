@@ -32,7 +32,7 @@ typedef struct __dvdInfo
 
 	int rentState;
 	int numOfRentCus;
-	dvdRentInfo rentList[RENT_LEN];
+	dvdRentInfo rentList[RENT_LEN]; //포인터가아니라 구조체 배열 이용..=>말록같은것필요 x
 }dvdInfo;
 
 #endif

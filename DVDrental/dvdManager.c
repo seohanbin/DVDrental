@@ -97,9 +97,8 @@ void HistoryOfRent(void)
 		system("pause");
 		return;
 	}
-
 	ShowRentHistory(pFindingDVD);
-	
+	system("pause");
 }
 
 void RentDVD()
@@ -194,6 +193,18 @@ void ReturnDVD()
 		system("pause");
 		return;
 	}
+
+	if (pdvd->rentState == RENTED)
+	{
+		puts("대여중이라 반납가능");
+	}
+	else
+	{
+		puts("이미반납됨.... 반납불가능");
+		system("pause");
+		return;
+	}
+
 
 	//반납과정
 	//rentstate change

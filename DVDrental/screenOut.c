@@ -49,6 +49,20 @@ void ShowCustomerInfo(cusInfo * pCus)
     printf("┃ ▶ 전화번호: %s \n", pCus->phoneNum);
     printf("┗━━━━━━━━━━━━━━━━ \n\n");
     
+	system("pause");
+	//system("cls");   //stdlib.h
+	//히스토리보여줄때 있으면 안됨..
+}
+
+void ShowCustomerInfocontinue(cusInfo * pCus)
+{
+
+	printf("┏━━━━━━━━━━━━━━━━ \n");
+	printf("┃ ▶ ID: %s \n", pCus->ID);
+	printf("┃ ▶ 이름: %s \n", pCus->name);
+	printf("┃ ▶ 전화번호: %s \n", pCus->phoneNum);
+	printf("┗━━━━━━━━━━━━━━━━ \n\n");
+
 	//system("pause");
 	//system("cls");   //stdlib.h
 	//히스토리보여줄때 있으면 안됨..
@@ -76,7 +90,7 @@ void ShowRentHistory(dvdInfo * pCus)
 	for ( i = 0; i < pCus->numOfRentCus ; i++)
 	{
 		printf("대여일: %d \n", pCus->rentList[i].rentDay);
-		ShowCustomerInfo(GetCusPtrByID(pCus->rentList[i].cusID));
+		ShowCustomerInfocontinue(GetCusPtrByID(pCus->rentList[i].cusID));
 		printf("━━━━━━━━━━━━━━━━ \n");
 	}
 

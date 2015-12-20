@@ -9,7 +9,7 @@
 
 #define MAX_DVD  100
 
-static dvdInfo * dvdList[MAX_DVD];
+static dvdInfo * dvdList[MAX_DVD]; // 포인터배열 => 말록필요
 static int numOfDVD=0;
 
 /* 함    수: int AddCusInfo (char * ID, char * name, char * num)
