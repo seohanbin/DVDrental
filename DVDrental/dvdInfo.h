@@ -18,11 +18,6 @@
 enum {ACTION=1, COMIC, SF, ROMANTIC}; // 장르 정보
 enum { RENTED, RETURNED };    // 대여 상태를 나타내는 상수!
 
-typedef struct __dvdRentInfo
-{
-	char cusID[ID_LEN];    // 대여 고객 ID
-	unsigned int rentDay;    // 대여일
-} dvdRentInfo;
 
 typedef struct __dvdInfo 
 {
@@ -31,8 +26,8 @@ typedef struct __dvdInfo
     int genre;      // 장르
 
 	int rentState;
-	int numOfRentCus;
-	dvdRentInfo rentList[RENT_LEN]; //포인터가아니라 구조체 배열 이용..=>말록같은것필요 x
+	//int numOfRentCus;
+	//dvdRentInfo rentList[RENT_LEN]; //포인터가아니라 구조체 배열 이용..=>말록같은것필요 x
 }dvdInfo;
 
 #endif

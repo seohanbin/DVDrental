@@ -160,11 +160,13 @@ void RentDVD()
 	pdvd->rentState = RENTED;
 
 	//rentlifo ADDING..(아이디만 복사, 날짜 대입)
-	pdvd->rentList[pdvd->numOfRentCus].rentDay = rentingday; //날짜대입
-	strcpy(pdvd->rentList[pdvd->numOfRentCus].cusID, rentingID); //아이디복사
+	//pdvd->rentList[pdvd->numOfRentCus].rentDay = rentingday; //날짜대입
+	//strcpy(pdvd->rentList[pdvd->numOfRentCus].cusID, rentingID); //아이디복사
+
+
 
 	//numof rentcus ++
-	pdvd->numOfRentCus++;
+	//pdvd->numOfRentCus++;
 	
 
 	puts("대여 완료...");
@@ -212,7 +214,7 @@ void ReturnDVD()
 
 	puts("반납 완료...");
 	system("pause");
-
+	 
 }
 /* end of file */
 

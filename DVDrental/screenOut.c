@@ -9,7 +9,7 @@
 #include "cusInfo.h"
 #include "dvdInfo.h"
 #include "screenOut.h"
-
+#include "rentInfo.h"
 //히스토리호출시아이디를 통해 커스인포에 액세스필요..
 #include "cusInfoAccess.h"
 
@@ -83,19 +83,30 @@ void ShowDVDInfo(dvdInfo * pCus)
 
 }
 
-void ShowRentHistory(dvdInfo * pCus)
-{//여기다가 히스토리 예정
+void ShowDVDrentInfo(dvdRentInfo pRinfo)
+{
 
-	int i;
-	for ( i = 0; i < pCus->numOfRentCus ; i++)
-	{
-		printf("대여일: %d \n", pCus->rentList[i].rentDay);
-		ShowCustomerInfocontinue(GetCusPtrByID(pCus->rentList[i].cusID));
-		printf("━━━━━━━━━━━━━━━━ \n");
-	}
-
+	printf("┏━━━━━━━━━━━━━━━━ \n");
+	printf("┃ ▶ ISBN: %s \n", pRinfo.ISBN);
+	printf("┃ ▶ 대여일: %d\n", pRinfo.rentDay);
+	printf("┗━━━━━━━━━━━━━━━━ \n\n");
 
 }
+
+//void ShowRentHistory(dvdInfo * pCus)
+//{//여기다가 히스토리 예정
+//
+//	int i;
+//	for ( i = 0; i < pCus->numOfRentCus ; i++)
+//	{
+//		printf("대여일: %d \n", pCus->rentList[i].rentDay);
+//		ShowCustomerInfocontinue(GetCusPtrByID(pCus->rentList[i].cusID));
+//		printf("━━━━━━━━━━━━━━━━ \n");
+//	}
+//
+//
+//}
+
 
 //2가지 방식 반환가능. 문자열출력void, 문자열반환char*
 void ShowGenre(int gen)

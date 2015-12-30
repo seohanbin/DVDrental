@@ -31,7 +31,7 @@ int AddDVDInfo(char * isbn, char * title, int * genre)
 	strcpy(dvdList[numOfDVD]->title, title);
 	//strcpy(dvdList[numOfDVD]->genre, genre);
 	dvdList[numOfDVD]->genre = *genre;
-	dvdList[numOfDVD]->numOfRentCus = 0;
+	//dvdList[numOfDVD]->numOfRentCus = 0;
 	dvdList[numOfDVD]->rentState = RETURNED;
 	numOfDVD++;
 	return numOfDVD;
