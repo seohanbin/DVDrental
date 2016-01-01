@@ -10,6 +10,7 @@
 
 #include "cusInfo.h"
 #include "dvdInfo.h"
+#include "rentInfo.h"
 
 void ShowMenu(void);
 void ShowCustomerInfo(cusInfo * pCus);

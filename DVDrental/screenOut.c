@@ -32,8 +32,11 @@ void ShowMenu(void)
 	printf(" 6. DVD 반납 \n");
 	printf("━━━━━━━━━━━━━━━━ \n");
 
-    printf(" 7. DVD 대여고객 전체출력 \n");
-	printf(" 8. 종료 \n");
+    printf(" 7. DVD 대여 고객   전체출력 \n");
+	printf(" 8. CUS 대여 디비디 전체출력 \n");
+
+
+	printf(" 9. 종료 \n");
     printf("━━━━━━━━━━━━━━━━ \n");
     printf("선택》 ");
 }

@@ -10,8 +10,12 @@
 #include "dvdInfoAccess.h"
 #include "screenOut.h"
 
+#include "rentInfoAccess.h"
+
 //이것도 필요..아디유효성,이름가져올때.
 #include "cusInfoAccess.h"
+
+#include "cusInfo.h" //ID_LEN 가져올때 필요..
 
 /* 함    수: void RegistCustomer(void)
 * 기    능: 신규 회원 가입.
@@ -39,7 +43,6 @@ void RegistDVD(void)
 
 
 	fputs("장르 입력(액션=1 코믹=2 SF=3 로맨틱=4): ", stdout);
-	//gets(genre);
 	scanf("%d", &genre);
 	while (getchar()!='\n');
 
@@ -79,7 +82,9 @@ void SearchDVDInfo(void)
 	ShowDVDInfo(pFindingDVD);
 }
 
-void HistoryOfRent(void)
+//void HistoryOfRentByISBN(void)
+
+void HistoryOfRentByISBN(void)
 { //이것을 통해 스크린아웃 호출할듯...
 
 	int i;
@@ -97,8 +102,49 @@ void HistoryOfRent(void)
 		system("pause");
 		return;
 	}
-	ShowRentHistory(pFindingDVD);
+	else
+	{
+		puts("유효한 ISBN..진행");
+	}
+	//ShowRentHistory(pFindingDVD);
+	PrintOutRentAllCusInfo(isbn_finding);
 	system("pause");
+}
+
+void HistoryOfRentByCus(void)
+{
+	char id_finding[ID_LEN];
+	int day_StartFinding, day_EndFinding;
+
+	fputs("찾는 ID: ", stdout);
+	gets(id_finding);
+
+	//id validation
+	if (GetCusPtrByID(id_finding)) //여기서 pRentingCus에 커스터머포인터를 할당한다(실은 쓰지 않는다)
+	{
+		puts("유효한 아디.. 진행");
+	}
+	else
+	{//0이면.. NULL이면
+		puts("invalid ID exiting..");
+		system("pause");
+		return;
+	}
+
+
+	fputs("기간(정수 두개 space로 구분, 시작일 종료일): ", stdout);
+	scanf("%d %d", &day_StartFinding, &day_EndFinding);
+	while (getchar() != '\n');
+
+	if (day_StartFinding>day_EndFinding)
+	{
+		puts("종료일이 시작일보다 빠름..(오류)");
+		return;
+	}
+	PrintOutCusAllRentInfo(id_finding, day_StartFinding, day_EndFinding);
+	puts("조회완료..");
+	system("pause");
+
 }
 
 void RentDVD()
@@ -114,7 +160,7 @@ void RentDVD()
 	fputs("대여할 디비디 ISBN: ", stdout);
 	gets(ISBN);
 
-	if (pdvd = GetDVDPtrByID(ISBN)) //여기서 pdvd 에 빌리려는 디비디를 할당한다
+	if (pdvd = GetDVDPtrByID(ISBN)) //여기서 pdvd 에 빌리려는 디비디를 할당한다-> 안씀
 	{
 		puts("유효한 isbn..");
 	}
@@ -137,6 +183,7 @@ void RentDVD()
 		puts("대여가능상태.. 대여진행");
 	}
 
+
 	fputs("대여할 id입력: ", stdout);
 	gets(rentingID);
 	//id validation
@@ -150,10 +197,12 @@ void RentDVD()
 		system("pause");
 		return;
 	}
+
 	
 	fputs("대여날짜 입력(정수): ", stdout);
 	scanf("%d", &rentingday);
 	while (getchar() != '\n');
+
 
 	//대여과정
 	//rentstate change
@@ -163,7 +212,7 @@ void RentDVD()
 	//pdvd->rentList[pdvd->numOfRentCus].rentDay = rentingday; //날짜대입
 	//strcpy(pdvd->rentList[pdvd->numOfRentCus].cusID, rentingID); //아이디복사
 
-
+	AddRentList(ISBN, rentingID, rentingday);
 
 	//numof rentcus ++
 	//pdvd->numOfRentCus++;

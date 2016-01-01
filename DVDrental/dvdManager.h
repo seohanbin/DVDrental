@@ -3,7 +3,10 @@
 
 void RegistDVD(void);
 void SearchDVDInfo(void);
-void HistoryOfRent(void);
+
+void HistoryOfRentByISBN(void);
+void HistoryOfRentByCus(void);
+
 void RentDVD(void);
 void ReturnDVD(void);
 

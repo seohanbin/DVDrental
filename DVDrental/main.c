@@ -14,8 +14,9 @@
 enum{CUS_REGIST=1, CUS_SEARCH, 
 	DVD_REGIST, DVD_SEARCH, 
 	DVD_RENT, DVD_RETURN, 
-	DVD_RENTHISTORY, QUIT,
-	SEEDDATA};//씨드는 9번!
+	DVD_RENTHISTORY, CUS_RENTHISTORY,	
+	QUIT,
+	SEEDDATA};//씨드는 10번!
 
 int main(void)
 {
@@ -29,42 +30,46 @@ int main(void)
 
         switch(inputMenu)
         {
-        case CUS_REGIST:
+        case CUS_REGIST: //1
             RegistCustomer();
             break;
         
-        case CUS_SEARCH:
+        case CUS_SEARCH: //2
             SearchCusInfo();
             break;
 
-		case DVD_REGIST:
+		case DVD_REGIST: //3
 			RegistDVD();
 			break;
 
-		case DVD_SEARCH:
+		case DVD_SEARCH: //4
 			SearchDVDInfo();
 			break;
 
-		case DVD_RENT:
+		case DVD_RENT: //5
 			RentDVD();
 			break;
 
-		case DVD_RETURN:
+		case DVD_RETURN: //6
 			ReturnDVD();
 			break;
 
-		case DVD_RENTHISTORY:
-			HistoryOfRent();
+		case DVD_RENTHISTORY: //7
+			HistoryOfRentByISBN();
 			break;
 
-		case SEEDDATA:
+		case CUS_RENTHISTORY: //8
+			HistoryOfRentByCus();
+			break;
+
+		case SEEDDATA: //10
 			puts("시드데이터 시작..");
 			Registdvdseed();
 			Registcusseed();
 			break;
         }
         
-        if(inputMenu==QUIT)
+        if(inputMenu==QUIT) //9
         {
             puts("normal exit");
             break;

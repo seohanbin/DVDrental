@@ -16,7 +16,7 @@ typedef struct __dvdRentInfo
 	char cusID[ID_LEN];    // 대여 고객 ID
 	char ISBN[ISBN_LEN];
 	unsigned int rentDay;    // 대여일
-} dvdRentInfo;
+}dvdRentInfo;
 
 #endif
 /* end of file */

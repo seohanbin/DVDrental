@@ -35,14 +35,14 @@ void AddRentList(char * ISBN, char * cusID, int rentDay)
 * 반    환: void
 *
 */
-void PrintOutRentAllCusInfo(char * ISBN)   // CusInfo, 고객 정보 출력
+void PrintOutRentAllCusInfo(char* ISBN)   // CusInfo, 고객 정보 출력
 {
 	int i;
 	for ( i = 0; i < numOfRentCus; i++)
 	{
 		if (strcmp(ISBN, rentList[i].ISBN) == 0)//그냥앞에!붙일수도 있지만
 		{
-			printf("대여일: %s\n", rentList[i].rentDay);
+			printf("대여일: %d\n", rentList[i].rentDay);
 			ShowCustomerInfocontinue(GetCusPtrByID(rentList[i].cusID));
 		}
 	}
@@ -63,6 +63,7 @@ void PrintOutCusAllRentInfo   //RentInfo, 대여 정보 출력
 		{
 			if (start <= rentList[i].rentDay && rentList[i].rentDay<=end)
 			{
+				puts("#ShowDVDrentInfo(rentList[i]);");
 				ShowDVDrentInfo(rentList[i]);
 			}
 		}
