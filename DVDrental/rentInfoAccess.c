@@ -12,6 +12,7 @@
 #include "screenOut.h"
 
 #define RENT_LEN  100
+#define RENT_BACKUP "rentinfo.dat"
 
 static dvdRentInfo rentList[RENT_LEN];
 static int numOfRentCus = 0;
@@ -27,6 +28,8 @@ void AddRentList(char * ISBN, char * cusID, int rentDay)
 	strcpy(rentList[numOfRentCus].cusID, cusID);
 	rentList[numOfRentCus].rentDay = rentDay;
 	numOfRentCus++;
+
+	saveRENTINFO();
 }
 
 
@@ -69,5 +72,40 @@ void PrintOutCusAllRentInfo   //RentInfo, 대여 정보 출력
 		}
 	}
 }
+
+void loadRENTINFO(void) //구조체 / 배열
+{
+	int i;
+
+	FILE* SaveData = fopen(RENT_BACKUP, "rb");
+	if (SaveData == NULL)
+		return;
+
+	fread(SaveData, sizeof(int), 1, &numOfRentCus);
+
+	for (i = 0; i < numOfRentCus; i++)
+	{
+		fread(&rentList[i], sizeof(cusInfo), 1, SaveData);
+	}
+
+	fclose(SaveData);
+}
+
+void saveRENTINFO(void) //구조체 배열
+{
+
+	FILE* SaveData = fopen(RENT_BACKUP, "wb");
+	if (SaveData == NULL)
+		return;
+
+	fwrite(SaveData, sizeof(int), 1, &numOfRentCus);
+	fwrite(rentList, sizeof(cusInfo), numOfRentCus, SaveData);
+
+	fclose(SaveData);
+
+}
+
+
+
 
 /* end of file */

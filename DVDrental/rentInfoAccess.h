@@ -12,5 +12,8 @@ void AddRentList(char * ISBN, char * cusID, int rentDay);
 void PrintOutRentAllCusInfo(char * ISBN);
 void PrintOutCusAllRentInfo(char * ID, unsigned int start, unsigned int end);
 
+void loadRENTINFO(void);
+void saveRENTINFO(void);
+
 #endif
 /* end of file */

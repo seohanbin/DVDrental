@@ -1,10 +1,4 @@
-/* Name: cusManager.c  ver 1.0
-* Content: dvd 관련 업무 처리 함수.
-* Implementation: YSW
-*
-* Last modified 2008/01/01
-*/
-
+//dvdM
 #include "common.h"
 #include "dvdInfo.h"
 #include "dvdInfoAccess.h"
@@ -13,10 +7,17 @@
 #include "rentInfoAccess.h"
 
 //이것도 필요..아디유효성,이름가져올때.
+//#include "cusInfoAccess.h"
+
+//#include "cusInfo.h" //ID_LEN 가져올때 필요..
+
+//cusM
+//#include "common.h"
+#include "cusInfo.h"
 #include "cusInfoAccess.h"
+//#include "screenOut.h"
 
-#include "cusInfo.h" //ID_LEN 가져올때 필요..
-
+//FUNC_ dvd
 /* 함    수: void RegistCustomer(void)
 * 기    능: 신규 회원 가입.
 * 반    환: void
@@ -44,7 +45,7 @@ void RegistDVD(void)
 
 	fputs("장르 입력(액션=1 코믹=2 SF=3 로맨틱=4): ", stdout);
 	scanf("%d", &genre);
-	while (getchar()!='\n');
+	while (getchar() != '\n');
 
 	if (!AddDVDInfo(ISBN, title, &genre))
 	{
@@ -170,7 +171,7 @@ void RentDVD()
 		system("pause");
 		return;
 	}
-	
+
 
 	if (pdvd->rentState == RENTED)
 	{
@@ -198,7 +199,7 @@ void RentDVD()
 		return;
 	}
 
-	
+
 	fputs("대여날짜 입력(정수): ", stdout);
 	scanf("%d", &rentingday);
 	while (getchar() != '\n');
@@ -216,10 +217,12 @@ void RentDVD()
 
 	//numof rentcus ++
 	//pdvd->numOfRentCus++;
-	
+
 
 	puts("대여 완료...");
+	saveDVDINFO();
 	system("pause");
+
 
 }
 
@@ -262,8 +265,9 @@ void ReturnDVD()
 	pdvd->rentState = RETURNED;
 
 	puts("반납 완료...");
+	saveDVDINFO();
 	system("pause");
-	 
+
 }
 /* end of file */
 
@@ -282,3 +286,100 @@ void Registdvdseed(void)
 	puts("시드 디비비 완료...");
 	system("pause");
 }
+
+
+
+//FUNC_CUS
+/* 함    수: void RegistCustomer(void)
+* 기    능: 신규 회원 가입.
+* 반    환: void
+*
+*/
+void RegistCustomer(void)
+{
+	char id[10];
+	char name[100];
+	char phone[100];
+
+
+	fputs("ID 입력: ", stdout);
+	gets(id);
+	if (IsRegistID(id))
+	{
+		puts("이미 존재하는 아이디..재시도 필요");
+		system("pause");
+		return;
+	}
+
+	fputs("이름 입력: ", stdout);
+	gets(name);
+
+	fputs("전번 입력: ", stdout);
+	gets(phone);
+
+	if (!AddCusInfo(id, name, phone))
+	{
+		puts("정상적 저장 실패!");
+		system("pause");
+		return;
+	};
+	puts("가입 완료");
+	system("pause");
+
+
+}
+
+/* 함    수: void SearchCusInfo(void)
+* 기    능: ID를 통한 회원 정보 검색
+* 반    환: void
+*
+*/
+void SearchCusInfo(void)
+{
+	cusInfo* pFindingCus;
+	char findingID[10];
+	fputs("찾는 ID 입력: ", stdout);
+	gets(findingID);
+
+	pFindingCus = GetCusPtrByID(findingID);
+	if (pFindingCus == NULL)
+	{
+		puts("해당ID 부존");
+		system("pause");
+		return;
+	}
+
+	ShowCustomerInfo(pFindingCus);
+}
+
+void Registcusseed(void)
+{
+	puts("시드 커스텀 시작..");
+	AddCusInfo("1234", "qwer", "asdf");
+	AddCusInfo("2345", "wert", "sdfg");
+	AddCusInfo("3456", "erty", "dfgh");
+	puts("시드 커스텀 완료..");
+	system("pause");
+}
+
+
+
+
+
+void loadData(void)
+{
+	loadCUSINFO();
+	loadDVDINFO();
+	loadRENTINFO();
+}
+
+void saveData(void)
+{
+	saveCUSINFO();
+	saveDVDINFO();
+	saveRENTINFO();
+}
+
+
+
+/* end of file */

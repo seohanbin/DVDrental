@@ -8,6 +8,7 @@
 #include "cusInfo.h"
 
 #define MAX_CUSTOMER  100
+#define CUS_BACKUP "cusinfo.dat"
 
 static cusInfo * cusList[MAX_CUSTOMER];
 static int numOfCustomer=0;
@@ -31,6 +32,8 @@ int AddCusInfo(char * ID, char * name, char * num)
 	strcpy(cusList[numOfCustomer]->name, name);
 	strcpy(cusList[numOfCustomer]->phoneNum, num);
 	numOfCustomer++;
+
+	saveCUSINFO();
 	return numOfCustomer;
 }
 
@@ -82,5 +85,40 @@ int IsRegistID(char * ID)
 	//}
 	//return 0;
 }
+
+
+void loadCUSINFO(void) //구조체 포인터 배열
+{
+	int i;
+
+	FILE* SaveData = fopen(CUS_BACKUP, "rb");
+	fread(SaveData, sizeof(int), 1, &numOfCustomer);
+
+	for ( i = 0; i < numOfCustomer; i++)
+	{
+		fread(cusList[i], sizeof(cusInfo), 1, SaveData);
+	}
+
+	fclose(SaveData);
+}
+
+void saveCUSINFO(void) //구포인터배열
+{
+	int i;
+
+	FILE* SaveData = fopen(CUS_BACKUP, "wb");
+	if (SaveData == NULL)
+		return;
+
+	fwrite(SaveData, sizeof(int), 1, &numOfCustomer);
+
+	for ( i = 0; i < numOfCustomer; i++)
+	{
+		fwrite(cusList[i], sizeof(cusInfo), 1, SaveData);
+	}
+
+	fclose(SaveData);
+}
+
 
 /* end of file */

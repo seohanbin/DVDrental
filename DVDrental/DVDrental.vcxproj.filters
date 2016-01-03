@@ -24,9 +24,6 @@
     <ClInclude Include="cusInfoAccess.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cusManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="screenOut.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -36,21 +33,18 @@
     <ClInclude Include="dvdInfoAccess.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="dvdManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="rentInfoAccess.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="rentInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="blManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cusInfoAccess.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="cusManager.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.c">
@@ -59,13 +53,13 @@
     <ClCompile Include="screenOut.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="dvdManager.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="dvdInfoAccess.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="rentInfoAccess.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="blManager.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

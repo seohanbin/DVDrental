@@ -1,6 +1,14 @@
-#ifndef __DVDMANAGER_H__
-#define __DVDMANAGER_H__
+#ifndef __BLMANAGER_H__
+#define __BLMANAGER_H__
 
+
+//cus
+void RegistCustomer(void);
+void SearchCusInfo(void);
+
+void Registcusseed(void);
+
+//dvd
 void RegistDVD(void);
 void SearchDVDInfo(void);
 
@@ -16,4 +24,7 @@ void ReturnDVD();
 void Registdvdseed(void);
 
 
+
+
 #endif
+/* end of file */

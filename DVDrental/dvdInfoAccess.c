@@ -8,6 +8,7 @@
 #include "dvdInfo.h"
 
 #define MAX_DVD  100
+#define DVD_BACKUP "dvdinfo.dat"
 
 static dvdInfo * dvdList[MAX_DVD]; // 포인터배열 => 말록필요
 static int numOfDVD=0;
@@ -34,6 +35,8 @@ int AddDVDInfo(char * isbn, char * title, int * genre)
 	//dvdList[numOfDVD]->numOfRentCus = 0;
 	dvdList[numOfDVD]->rentState = RETURNED;
 	numOfDVD++;
+
+	saveDVDINFO();
 	return numOfDVD;
 }
 
@@ -85,6 +88,40 @@ int IsRegistDVD(char * ISBN)
 	//return 0;
 }
 
+
+
+void loadDVDINFO(void) //구조체 포인터 배열
+{
+	int i;
+
+	FILE* SaveData = fopen(DVD_BACKUP, "rb");
+	fread(SaveData, sizeof(int), 1, &numOfDVD);
+
+	for (i = 0; i < numOfDVD; i++)
+	{
+		fread(dvdList[i], sizeof(cusInfo), 1, SaveData);
+	}
+
+	fclose(SaveData);
+}
+
+void saveDVDINFO(void) //구포인터배열
+{
+	int i; 
+
+	FILE* SaveData = fopen(DVD_BACKUP, "wb");
+	if (SaveData == NULL)
+		return;
+
+	fwrite(SaveData, sizeof(int), 1, &numOfDVD);
+
+	for ( i = 0; i < numOfDVD; i++)
+	{
+		fwrite(dvdList[i], sizeof(cusInfo), 1, SaveData);
+	}
+
+	fclose(SaveData);
+}
 
 
 

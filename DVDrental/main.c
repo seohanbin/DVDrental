@@ -8,8 +8,8 @@
 #include "common.h"
 #include "screenOut.h"
 
-#include "cusManager.h"
-#include "dvdManager.h"
+#include "blManager.h"
+
 
 enum{CUS_REGIST=1, CUS_SEARCH, 
 	DVD_REGIST, DVD_SEARCH, 
@@ -21,7 +21,9 @@ enum{CUS_REGIST=1, CUS_SEARCH,
 int main(void)
 {
     int inputMenu = 0;
-    
+
+	loadData();
+
     while(1)
     {
         ShowMenu();
