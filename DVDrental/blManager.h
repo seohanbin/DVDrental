@@ -24,6 +24,12 @@ void ReturnDVD();
 void Registdvdseed(void);
 
 
+//시작시오류...
+void loadData(void);
+void saveData(void);
+
+
+
 
 
 #endif

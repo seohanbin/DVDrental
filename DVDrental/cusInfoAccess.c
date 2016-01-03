@@ -7,6 +7,9 @@
 #include "common.h"
 #include "cusInfo.h"
 
+//오류.,.,.
+#include "cusInfoAccess.h"
+
 #define MAX_CUSTOMER  100
 #define CUS_BACKUP "cusinfo.dat"
 
@@ -92,6 +95,9 @@ void loadCUSINFO(void) //구조체 포인터 배열
 	int i;
 
 	FILE* SaveData = fopen(CUS_BACKUP, "rb");
+	if (SaveData == NULL)
+		return;
+
 	fread(SaveData, sizeof(int), 1, &numOfCustomer);
 
 	for ( i = 0; i < numOfCustomer; i++)

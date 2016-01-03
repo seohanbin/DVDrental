@@ -11,6 +11,9 @@
 #include "cusInfoAccess.h"
 #include "screenOut.h"
 
+//¿À·ù..
+#include "rentInfoAccess.h"
+
 #define RENT_LEN  100
 #define RENT_BACKUP "rentinfo.dat"
 

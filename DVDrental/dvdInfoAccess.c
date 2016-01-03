@@ -7,6 +7,9 @@
 #include "common.h"
 #include "dvdInfo.h"
 
+//오류..
+#include "dvdInfoAccess.h"
+
 #define MAX_DVD  100
 #define DVD_BACKUP "dvdinfo.dat"
 
@@ -95,6 +98,10 @@ void loadDVDINFO(void) //구조체 포인터 배열
 	int i;
 
 	FILE* SaveData = fopen(DVD_BACKUP, "rb");
+	if (SaveData == NULL)
+		return;
+
+
 	fread(SaveData, sizeof(int), 1, &numOfDVD);
 
 	for (i = 0; i < numOfDVD; i++)
